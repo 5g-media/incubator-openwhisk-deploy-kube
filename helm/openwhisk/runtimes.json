@@ -6,7 +6,7 @@
                 "default": true,
                 "image": {
                     "prefix": "docker5gmedia",
-                    "name": "cuda8-runtime-ubuntu1604action",
+                    "name": "cuda8action",
                     "tag": "latest"
                 },
                 "deprecated": false,

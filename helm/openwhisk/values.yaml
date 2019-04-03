@@ -221,8 +221,8 @@ nginx:
 
 # Controller configurations
 controller:
-  imageName: "openwhisk/controller"
-  imageTag: "38e4b05"
+  imageName: "docker5gmedia/controller"
+  imageTag: "3d120c9"
   imagePullPolicy: "IfNotPresent"
   replicaCount: 1
   restartPolicy: "Always"
@@ -233,8 +233,8 @@ controller:
 
 # Invoker configurations
 invoker:
-  imageName: "openwhisk/invoker"
-  imageTag: "38e4b05"
+  imageName: "docker5gmedia/invoker"
+  imageTag: "3d120c9"
   imagePullPolicy: "IfNotPresent"
   restartPolicy: "Always"
   port: 8080

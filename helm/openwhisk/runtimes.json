@@ -1,5 +1,27 @@
 {
     "runtimes": {
+        "cuda":[
+           {
+                "kind": "cuda:8@selector",
+                "default": true,
+                "image": {
+                    "prefix": "docker5gmedia",
+                    "name": "cuda8-runtime-ubuntu1604action",
+                    "tag": "latest"
+                },
+                "deprecated": false,
+                "attached": {
+                    "attachmentName": "codefile",
+                    "attachmentType": "text/plain"
+                },
+                "stemCells": [
+                    {
+                        "count": 2,
+                        "memory": "256 MB"
+                    }
+                ]
+            }
+        ],
         "nodejs": [
             {
                 "kind": "nodejs:6",

@@ -143,7 +143,7 @@ k8s:
   domain: cluster.local
   dns: kube-dns.kube-system
   persistence:
-    enabled: true
+    enabled: false
     hasDefaultStorageClass: true
     explicitStorageClass: nil
 
@@ -245,8 +245,8 @@ controller:
 
 # Invoker configurations
 invoker:
-  imageName: "openwhisk/invoker"
-  imageTag: "d353d26"
+  imageName: "docker5gmedia/invoker-gpu-d353d26"
+  imageTag: "latest"
   imagePullPolicy: "IfNotPresent"
   restartPolicy: "Always"
   port: 8080
@@ -256,7 +256,7 @@ invoker:
   containerFactory:
     dind: false
     useRunc: false
-    impl: "docker"
+    impl: "kubernetes"
     enableConcurrency: false
     networkConfig:
       name: "bridge"

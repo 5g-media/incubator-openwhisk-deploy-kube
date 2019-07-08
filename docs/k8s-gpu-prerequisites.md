@@ -59,8 +59,8 @@ Your next step before the actual OpenWhisk deployment would be to:
 * Increase action memory limit by adding the below stanza to `mycluster.yaml`. Refer to [here](https://github.com/5g-media/incubator-openwhisk-deploy-kube/tree/gpu#customize-the-deployment) for more information on this file.
   ```
   whisk:
-  actions:
-    limits:
-      memory:
-        max: "2048m"
+    actions:
+      limits:
+        memory:
+          max: "2048m"
   ```

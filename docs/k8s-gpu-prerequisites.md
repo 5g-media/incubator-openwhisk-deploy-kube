@@ -132,6 +132,8 @@ sudo service docker start
 
 Now that we have GPU host ready, its time to install Minikube.
 
+Log into your GPU node.
+
 ### Install Kubectl
 
 Start with installing kubectl

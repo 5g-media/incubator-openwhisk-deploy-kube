@@ -130,7 +130,7 @@ sudo service docker start
 
 # Minikube
 
-Now that we have GPU host ready, its time to install [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+Now that we have GPU host ready, its time to install Minikube.
 
 ### Install Kubectl
 
@@ -146,7 +146,7 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 
 Verify it
 ```
-kubectl version
+sudo kubectl version
 ```
 
 ### Install Minikube
@@ -158,6 +158,8 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
   && chmod +x minikube
 sudo install minikube /usr/local/bin
 ```
+
+**Note: You may need to run kubectl/minikube/helm commands under sudo if you have not configured them to run under your own user**
 
 ### Install dependency
 
@@ -184,7 +186,7 @@ sudo ip link set docker0 promisc on
 Check status and wait for all pods to become `Running` or `Completed`
 ```
 minikube status
-kubectl get pod --all-namespaces
+get pod --all-namespaces
 ```
 
 ### Install Nvidia k8s plugin
@@ -233,7 +235,11 @@ kubectl logs cuda-vector-add
   sudo ip link set docker0 promisc on
   ```
 
-* Deletion (TBD)
+* To delete minukbe and all of its resources
+  ```
+  minikube stop
+  minikube delete
+  ```
 
 # OpenWhisk
 
@@ -293,6 +299,24 @@ git clone https://github.com/5g-media/incubator-openwhisk-deploy-kube.git
 cd incubator-openwhisk-deploy-kube
 git checkout gpu
 ~/linux-amd64/helm install ./helm/openwhisk --namespace=openwhisk --name=owdev -f ~/mycluster.yaml
+```
+
+Installation can take a few minutes..
+
+Wait for invoker-health pod to get created and run
+```
+kubectl get pods -n openwhisk | grep invokerhealthtestaction
+```
+
+### Pull large GPU runtime images
+
+GPU runtime images are large. When GPU action is being invoked for the first time, OpenWhisk invoker pulls them out from docker hub. Depending on your
+network condition this can take fairly amount of time and causes timeouts for the action invocation. In oder to avoid this, pull the following images
+in all GPU kubernetes nodes
+
+```
+sudo docker pull docker5gmedia/python3dscudaaction
+sudo docker pull docker5gmedia/cuda8action
 ```
 
 ### Uninstallation

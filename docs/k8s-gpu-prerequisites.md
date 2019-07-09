@@ -287,7 +287,7 @@ When tiller pod is in `Running` state, grant necessary privileges to helm:
 kubectl create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 ```
 
-### Actual OW install
+### Actual OpenWhisk install
 
 Label the node
 
@@ -295,7 +295,7 @@ Label the node
 kubectl label nodes --all openwhisk-role=invoker
 ```
 
-Clone the repository and run helm to install OW
+Clone the repository and run helm to install OpenWhisk
 
 ```
 cd ~
@@ -307,7 +307,7 @@ git checkout gpu
 
 Installation can take a few minutes..
 
-Wait for invoker-health pod to get created and run
+Wait for invoker-health pod to get created:
 ```
 kubectl get pods -n openwhisk | grep invokerhealthtestaction
 ```

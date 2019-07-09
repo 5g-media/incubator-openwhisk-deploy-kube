@@ -33,7 +33,7 @@ nvidia-smi
 
 ### Docker-CE 18.06.0
 
-On your GPU nodes, install this specific version of (docker)[https://docs.docker.com/install/linux/docker-ce/ubuntu/] verified to be working with Nvidia, Kubernetes and Minikube.
+On your GPU nodes, install this specific version of [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) verified to be working with Nvidia, Kubernetes and Minikube.
 
 The below commands are taken from the docker installation guide.
 
@@ -78,7 +78,7 @@ sudo docker run hello-world
 
 ### nvidia-docker runtime
 
-Your next step would be to install nvidia docker runtime. It should be matched with the docker version you installed. Refer to (nvidia-docker)[https://github.com/NVIDIA/nvidia-docker] for more information.
+Your next step would be to install nvidia docker runtime. It should be matched with the docker version you installed. Refer to [nvidia-docker]([https://github.com/NVIDIA/nvidia-docker) for more information.
 
 In short, follow the below instructions
 
@@ -92,7 +92,7 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 sudo apt-get update
 ```
 
-Install the matched version as mentioned (here)[https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#how-do-i-install-20-if-im-not-using-the-latest-docker-version]:
+Install the matched version. Command taken from [(here](https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#how-do-i-install-20-if-im-not-using-the-latest-docker-version)
 ```
 sudo apt-get install -y nvidia-docker2=2.0.3+docker18.06.0-1 nvidia-container-runtime=2.0.0+docker18.06.0-1
 ```
@@ -159,7 +159,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 sudo install minikube /usr/local/bin
 ```
 
-### Install socat dependency
+### Install dependency
 
 ```
 sudo apt-get install socat
@@ -181,7 +181,7 @@ sudo ip link set docker0 promisc on
 
 ### Verify Minikube
 
-Check status
+Check status and wait for all pods to become `Running` or `Completed`
 ```
 minikube status
 kubectl get pod --all-namespaces
@@ -220,7 +220,7 @@ Create the POD
 kubectl create -f pod-gpu.yaml
 ```
 
-Wait for it to enter `Completed` state and verify logs
+Wait for it to enter `Completed` state and verify its logs
 
 ```
 kubectl logs cuda-vector-add
@@ -228,7 +228,7 @@ kubectl logs cuda-vector-add
 
 ### Special notes
 
-* You should run the following command each time you start minikube 
+* You should run the following command after each time you start minikube 
   ```
   sudo ip link set docker0 promisc on
   ```
@@ -263,15 +263,15 @@ nginx:
 
 ### Helm
 
-Download [helm](https://github.com/helm/helm/releases/tag/v2.14.1)
+Download [helm](https://github.com/helm/helm/releases/tag/v2.14.1) and extract it to ~
 
-Init helm
+Init helm causing tiller pod to get created
 
 ```
 ~/linux-amd64/helm init
 ```
 
-When tiller pod is running, grant necessary privileges to helm:
+When tiller pod is in `Running` state, grant necessary privileges to helm:
 
 ```
 kubectl create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default

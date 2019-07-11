@@ -258,11 +258,11 @@ Create the fllowing file under `~/mycluster.yaml`. Replace ingress.apiHostName w
 More information on mycluster.yaml can be found [here](https://github.com/5g-media/incubator-openwhisk-deploy-kube/blob/gpu/docs/configurationChoices.md)
 
 ```
-ingress:
-  type: NodePort
-  apiHostName: <MINIKUBE IP>
-  apiHostPort: 31001
 whisk:
+  ingress:
+    type: NodePort
+    apiHostName: <MINIKUBE IP>
+    apiHostPort: 31001
   limits:
     actions:
       memory:
@@ -315,7 +315,7 @@ kubectl get pods -n openwhisk | grep invokerhealthtestaction
 ### Pull large GPU runtime images
 
 GPU runtime images are large. When GPU action is being invoked for the first time, OpenWhisk invoker pulls them out from docker hub.
-Depending on your network condition this can take fairly amount of time and causes timeouts for the action invocation. In oder to avoid this, pull the following images in all GPU kubernetes nodes.
+Depending on your network conditions this can take a fairly amount of time and can cause timeouts for the action invocation. In oder to avoid this, pull the following images in advance, by invoking these commands from all of your GPU nodes.
 
 ```
 sudo docker pull docker5gmedia/python3dscudaaction

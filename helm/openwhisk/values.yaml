@@ -88,6 +88,8 @@ whisk:
         min: "0m"
         max: "10m"
         std: "10m"
+      gpu:
+        num: 1
     activation:
       payload:
         max: "1048576"
@@ -233,8 +235,8 @@ nginx:
 
 # Controller configurations
 controller:
-  imageName: "openwhisk/controller"
-  imageTag: "d353d26"
+  imageName: "docker5gmedia/controller-gpu-d353d26"
+  imageTag: "v4.0"
   imagePullPolicy: "IfNotPresent"
   replicaCount: 1
   restartPolicy: "Always"
@@ -246,7 +248,7 @@ controller:
 # Invoker configurations
 invoker:
   imageName: "docker5gmedia/invoker-gpu-d353d26"
-  imageTag: "v3.0"
+  imageTag: "v4.0"
   imagePullPolicy: "IfNotPresent"
   restartPolicy: "Always"
   port: 8080

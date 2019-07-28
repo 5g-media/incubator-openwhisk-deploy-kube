@@ -238,6 +238,13 @@ whisk:
             description: "The default allowed log size for an action invocation"
             type: "string"
             required: true
+      gpu:
+        num:
+          __metadata:
+            label: "Number of GPUs for action"
+            description: "The number of GPUs to expose to the action"
+            type: "string"
+            required: true
     activation:
       payload:
         max:

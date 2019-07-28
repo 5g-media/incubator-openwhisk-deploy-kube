@@ -180,6 +180,8 @@ app: {{ template "openwhisk.fullname" . }}
   value: {{ .Values.whisk.limits.actions.log.std | quote }}
 - name: "CONFIG_whisk_activation_payload_max"
   value: {{ .Values.whisk.limits.activation.payload.max | quote }}
+- name: "CONFIG_whisk_gpu_num"
+  value: {{ .Values.whisk.limits.actions.gpu.num | quote }}
 {{- end -}}
 
 {{/* Environment variables for configuring kafka topics */}}

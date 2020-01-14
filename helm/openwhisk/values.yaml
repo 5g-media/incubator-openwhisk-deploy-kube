@@ -248,7 +248,7 @@ controller:
 # Invoker configurations
 invoker:
   imageName: "docker5gmedia/invoker-gpu-d353d26"
-  imageTag: "v4.0"
+  imageTag: "v4.0-k8s-client-4.4.2"
   imagePullPolicy: "IfNotPresent"
   restartPolicy: "Always"
   port: 8080

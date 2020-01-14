@@ -1,5 +1,7 @@
 # Nvidia-GPU Node
 
+**Important: for RHEL 7.7: refer to [rhel-prerequisites](./k8s-gpu-rhel-prerequisites.md) instead**
+
 Start with preparing your GPU host(s) to be installed with needed drivers so that they can function as Kubernetes GPU node(s).
 
 You need to install nvidia drivers and nvidia-docker in each GPU node you have.

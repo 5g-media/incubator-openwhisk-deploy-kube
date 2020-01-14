@@ -14,6 +14,20 @@
                     "attachmentName": "codefile",
                     "attachmentType": "text/plain"
                 }
+            },
+            {
+                "kind": "python:3ds-0.6.0@gpu",
+                "default": false,
+                "image": {
+                    "prefix": "docker5gmedia",
+                    "name": "python3dscudaaction",
+                    "tag": "0.6.0"
+                },
+                "deprecated": false,
+                "attached": {
+                    "attachmentName": "codefile",
+                    "attachmentType": "text/plain"
+                }
             }
         ],
         "cuda":[
